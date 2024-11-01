@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management App</title>
+    <link rel="stylesheet" href="assets/styles/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+    <div class="site-wrap">
+        <div class="d-flex--justify gap3">
+            <aside class="aside">
+                <div class="logo-wrap">
+                    <img src="assets/img/cbwd-logo.webp" alt="CBWD" class="cbwd-logo">
+                </div>
+                <nav class="aside-nav" id="aside-nav">
+                    <ul id="boardList"></ul>
+                    <button id="createBoardButton" class="text-primary fw-semibold">+ Create New Board</button>
+
+                </nav>
+            </aside>
+            <main class="main">
+                <header class="header">
+                    <div class="d-flex--justify align-center">
+                        <div class="header-left">
+                            <h1></h1>
+                            <button class="mobile-board-dropdown-toggle" id="mobile-board-dropdown-toggle">
+                                <i class="fa fa-angle-down text-primary" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <button id="addTaskButton" disabled class="btn">+ Add New Task</button>
+                    </div>
+                </header>
+                <div class="board | bg-gray900 gap1">
+                    <div class="column column-todo" data-status="todo">
+                        <h2 class="column-cat">Todo</h2>
+                    </div>
+                    <div class="column column-doing" data-status="doing">
+                        <h2 class="column-cat">Doing</h2>
+                    </div>
+                    <div class="column column-done" data-status="done">
+                        <h2 class="column-cat">Done</h2>
+                    </div>
+                </div>
+                <!-- Modal for adding a new task -->
+                <div id="addTaskModal" class="modal hidden">
+                    <div class="modal-content">
+                        <span id="closeAddTask" class="close">&times;</span>
+                        <h2>Add New Task</h2>
+                        <label for="taskTitle">Title</label>
+                        <input type="text" id="taskTitle" placeholder="Task title" required>
+                        <label for="taskDescription">Description</label>
+                        <textarea id="taskDescription" placeholder="Task description"></textarea>
+                        <label>Subtasks</label>
+                        <div id="subtasksContainer" class="subtasks-container"></div>
+                        <button id="addSubtaskButton" class="btn btn--white">+ Add New Subtask</button>
+                        <label for="taskStatus">Status</label>
+                        <select id="taskStatus">
+                            <option value="todo">Todo</option>
+                            <option value="doing">Doing</option>
+                            <option value="done">Done</option>
+                        </select>
+                        <button id="createTaskButton" class="btn">Create Task</button>
+                    </div>
+                </div>
+                <!-- Modal for task details -->
+                <div id="taskDetailsModal" class="modal hidden">
+                    <div class="modal-content">
+                        <span id="closeTaskDetails" class="close">&times;</span>
+                        <h2 id="modalTaskTitle"></h2>
+                        <p id="modalTaskDescription"></p>
+                        <h3>Subtasks</h3>
+                        <ul id="modalSubtasks"></ul>
+                        <!-- buttons will be added here in JS -->
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
